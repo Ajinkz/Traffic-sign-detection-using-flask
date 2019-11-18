@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+#mask {
+   position: fixed;
+   left: 0;
+   top: 0;
+   bottom:0;
+   right:0;
+   margin:auto;
+   visibility:hidden;
+   z-index: -2;
+   background: #000;
+   background:rgba(0,0,0,0.8);
+   overflow:hidden;
+   opacity:0;
+   transition: all .5s ease-in-out;
+}
+#mask.showing{
+   opacity:1;
+   z-index: 9000;
+   visibility:visible;
+   overflow:auto;
+   transition: all .5s ease-in-out;
+}
+#boxes {
+   display:table;
+   width:100%;
+   height:100%;
+}
+.window {
+   max-width: 780px;
+   z-index: 9999;
+   padding: 20px;
+   border-radius: 15px;
+   text-align: center;
+   margin :auto;
+   background-color: #ffffff;
+   font-family: 'Segoe UI Light', sans-serif;
+   font-size: 15pt;
+}
+.window img {
+   width:100%;
+   height:auto;
+}
+.inner{display:table-cell;vertical-align:middle;}
+#popupfoot {
+   font-size: 16pt;
+}
+.showImage {
+   margin:0 0 3em;
+   display:table;
+   text-align:center
+}
+.showImage img {
+   display:block
+}
+</style>
+</head>
+
+<body>
+<div class="imagesBlock"> <a class="showImage"><img src="https://shareonline.in/wp-content/uploads/2016/06/nature-wallpaper-gallery-path-of-nature-wallpaper-ouRejx.jpg" width="200" height="200">image1</a> <a class="showImage"><img src="http://wallpapercave.com/wp/l5FBhgU.jpg" width="200" height="200">image2</a> <a class="showImage"><img src="http://www.walldevil.com/wallpapers/a49/wallpapers-nature-wallpaper-peony-white-online-canada-corner-pink.jpg" width="200" height="200">image3</a> <a class="showImage"><img src="http://wallpapercave.com/wp/Jp7kTmf.jpg" width="200" height="200">image4</a> <a class="showImage"><img src="http://www.hdbloggers.net/wp-content/uploads/2016/06/Nature.jpg" width="200" height="200">image5</a> </div>
+<div id="mask">
+  <div id="boxes">
+    <div class="inner">
+      <div id="dialog" class="window"> <a href="#" class="close">CLOSE</a>
+        <div id="popupfoot"> <img src="#" class="image" alt="Loading..."></img> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<script>
+$(document).ready(function() {
+
+    function showImage(fullPath) {
+        var id = '#dialog';
+        if (fullPath == "image1") {
+            var fullImagePath =
+                "https://shareonline.in/wp-content/uploads/2016/06/nature-wallpaper-gallery-path-of-nature-wallpaper-ouRejx.jpg";
+        }
+        if (fullPath == "image2") {
+            var fullImagePath =
+                "http://wallpapercave.com/wp/l5FBhgU.jpg";
+        }
+        if (fullPath == "image3") {
+            var fullImagePath =
+                "http://www.walldevil.com/wallpapers/a49/wallpapers-nature-wallpaper-peony-white-online-canada-corner-pink.jpg";
+        }
+        if (fullPath == "image4") {
+            var fullImagePath =
+                "http://wallpapercave.com/wp/Jp7kTmf.jpg";
+        }
+        if (fullPath == "image5") {
+            var fullImagePath =
+                "http://www.hdbloggers.net/wp-content/uploads/2016/06/Nature.jpg";
+        }
+
+
+        $('.image').attr({
+            'src': fullImagePath
+        });
+
+        //if close button is clicked
+        $('.window .close').click(function(e) {
+            //Cancel the link behavior
+            e.preventDefault();
+
+            $('#mask').removeClass('showing');
+        });
+
+    };
+
+    $(".showImage").on("click", function() {
+        showImage($(this).text());
+        $('#mask').addClass('showing');
+
+    });
+
+});
+</script>
+</body>
+</html>
