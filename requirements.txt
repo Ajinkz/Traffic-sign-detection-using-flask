@@ -43,7 +43,7 @@ MarkupSafe==1.1.1
 matplotlib==3.1.1
 mistune==0.8.4
 networkx==2.3
-numpy==1.16.3
+numpy==1.22.0
 opencv-contrib-python==4.1.0.25
 pandocfilters==1.4.2
 parso==0.5.1
